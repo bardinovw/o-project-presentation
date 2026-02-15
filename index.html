@@ -1,0 +1,2214 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adaptation Day: Путь Героя</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;700;900&family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      /* --- ОСНОВНЫЕ НАСТРОЙКИ --- */
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #0f0f0f;
+        display: grid;
+        gap: 30px;
+        grid-template-columns: 1fr;
+        margin: 0;
+        padding: 30px 0;
+        place-items: center;
+        color: #fff;
+        font-family: "Inter", sans-serif;
+      }
+
+      /* --- КОНТЕЙНЕР СЛАЙДА --- */
+      .slide-container {
+        align-items: center;
+        background-color: #1a1a1a;
+        border-radius: 16px;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
+        display: flex;
+        flex-direction: column;
+        height: 720px;
+        justify-content: center;
+        overflow: hidden;
+        padding: 50px 60px;
+        position: relative;
+        width: 1280px;
+        border: 1px solid #333;
+      }
+
+      /* --- ФОНОВЫЕ ЭФФЕКТЫ --- */
+      .slide-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+          radial-gradient(
+            circle at 10% 20%,
+            rgba(225, 0, 126, 0.12) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 90% 80%,
+            rgba(255, 255, 255, 0.03) 0%,
+            transparent 40%
+          );
+        z-index: 0;
+        pointer-events: none;
+      }
+      .slide-container::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: linear-gradient(
+          90deg,
+          #e1007e,
+          #ff1493
+        ); /* Фирменный цвет O! */
+        z-index: 2;
+      }
+      .slide-container > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* --- ТИПОГРАФИКА --- */
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Urbanist", sans-serif;
+        margin: 0;
+        text-transform: uppercase;
+      }
+      h1 {
+        font-size: 72px;
+        line-height: 1.1;
+        font-weight: 900;
+        margin-bottom: 20px;
+      }
+      .slide-title {
+        font-size: 46px;
+        font-weight: 800;
+        margin-bottom: 40px;
+        width: 100%;
+        text-align: left;
+        border-left: 8px solid #e1007e;
+        padding-left: 25px;
+        letter-spacing: 1px;
+      }
+      h3 {
+        font-size: 28px;
+        font-weight: 700;
+        color: #e1007e;
+        margin-bottom: 15px;
+      }
+      p,
+      li {
+        color: #e0e0e0;
+        font-size: 22px;
+        line-height: 1.6;
+        font-weight: 400;
+      }
+      strong {
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .accent {
+        color: #e1007e;
+      }
+      .content-area {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: center;
+        width: 100%;
+      }
+
+      /* --- ЛАЙАУТЫ --- */
+      .two-column {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        width: 100%;
+        align-items: center;
+      }
+
+      /* Сетка карточек */
+      .grid-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        width: 100%;
+      }
+      .card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 12px;
+        text-align: left;
+      }
+      .card .icon {
+        font-size: 40px;
+        color: #e1007e;
+        margin-bottom: 20px;
+      }
+      .card h4 {
+        font-size: 22px;
+        margin-bottom: 10px;
+        color: #fff;
+      }
+
+      /* Карточки для людей (фото + инфо) */
+      .person-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        overflow: hidden;
+        padding-bottom: 20px;
+        height: 100%;
+        transition: transform 0.3s ease;
+      }
+      .person-card:hover {
+        transform: translateY(-5px);
+        border-color: #e1007e;
+      }
+      .person-card .photo-area {
+        width: 100%;
+        height: 320px;
+        background-color: #2a2a2a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        margin-bottom: 20px;
+        position: relative;
+      }
+      .person-card .photo-area::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      }
+      .person-card .photo-area img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .person-card .info-area {
+        padding: 0 20px;
+        z-index: 2;
+      }
+      .person-card h4 {
+        color: #fff;
+        font-size: 24px;
+        margin-bottom: 8px;
+        font-weight: 700;
+      }
+      .person-card p {
+        color: #e1007e;
+        font-size: 18px;
+        font-weight: 500;
+        margin: 0;
+      }
+
+      /* Списки */
+      ul.custom-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      ul.custom-list li {
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 20px;
+        font-size: 24px;
+      }
+      ul.custom-list li::before {
+        content: "■";
+        color: #e1007e;
+        position: absolute;
+        left: 0;
+        top: 2px;
+        font-size: 18px;
+      }
+
+      /* Изображения / Плейсхолдеры */
+      .img-wrapper {
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: #222;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 400px;
+        color: #666;
+        font-size: 20px;
+        text-align: center;
+        flex-direction: column;
+      }
+      .img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* --- СТИЛИ ДЛЯ ГРАФИКА (Слайд 4) --- */
+      .chart-container {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 16px;
+        padding: 20px;
+        border: 1px solid #333;
+        overflow: hidden;
+      }
+      .year-display {
+        position: absolute;
+        bottom: 20px;
+        right: 30px;
+        font-size: 100px;
+        font-weight: 900;
+        color: #ffffff;
+        font-family: "Urbanist", sans-serif;
+        z-index: 0;
+        opacity: 0.8;
+      }
+      .chart-bars {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+      .racing-bar-row {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        transition: top 2s ease-in-out;
+        display: flex;
+        align-items: center;
+      }
+      .racing-bar-label {
+        width: 100px;
+        text-align: right;
+        padding-right: 15px;
+        font-weight: 700;
+        font-size: 18px;
+        color: #fff;
+        flex-shrink: 0;
+      }
+      .racing-bar-track {
+        flex-grow: 1;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+      .racing-bar {
+        height: 40px;
+        border-radius: 0 8px 8px 0;
+        transition: width 2s linear;
+        display: flex;
+        align-items: center;
+        padding-right: 10px;
+        position: relative;
+      }
+      .racing-bar-value {
+        position: absolute;
+        right: -70px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+        width: 60px;
+      }
+      .btn-replay {
+        margin-top: 30px;
+        padding: 15px 30px;
+        background: #e1007e;
+        border: none;
+        color: #fff;
+        border-radius: 30px;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: bold;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .btn-replay:hover {
+        background: #ff1493;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(225, 0, 126, 0.3);
+      }
+      .color-o {
+        background: linear-gradient(90deg, #b90066, #e1007e);
+        box-shadow: 0 0 15px rgba(225, 0, 126, 0.5);
+      }
+      .color-beeline {
+        background: linear-gradient(90deg, #d4a000, #ffcc00);
+        color: #000;
+        opacity: 0.8;
+      }
+      .color-mega {
+        background: linear-gradient(90deg, #4b0082, #7d2ae8);
+        opacity: 0.8;
+      }
+
+      /* --- СТИЛИ ДЛЯ КАРУСЕЛИ (Слайд 21) --- */
+      .carousel-wrapper {
+        width: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        padding: 40px 0;
+      }
+      .carousel-track-container {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        position: relative;
+        padding: 10px 0;
+      }
+      .carousel-track {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        gap: 30px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        padding-left: calc(50% - 160px);
+        padding-right: calc(50% - 160px);
+      }
+      .carousel-card {
+        min-width: 320px;
+        width: 320px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        flex-shrink: 0;
+        opacity: 0.4;
+        transform: scale(0.85);
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        filter: blur(1px);
+      }
+      .carousel-card.active {
+        opacity: 1;
+        transform: scale(1.1);
+        border-color: #e1007e;
+        box-shadow: 0 10px 40px rgba(225, 0, 126, 0.3);
+        filter: blur(0);
+        z-index: 2;
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .carousel-card .icon-box {
+        width: 70px;
+        height: 70px;
+        background: rgba(225, 0, 126, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        color: #e1007e;
+        font-size: 30px;
+      }
+      .carousel-btn {
+        background: rgba(0, 0, 0, 0.5);
+        border: 1px solid #333;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        color: #e1007e;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 10;
+        transition: all 0.3s;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .carousel-btn:hover {
+        background: #e1007e;
+        color: #fff;
+        border-color: #e1007e;
+      }
+      .carousel-btn.prev {
+        left: 20px;
+      }
+      .carousel-btn.next {
+        right: 20px;
+      }
+
+      /* --- СТИЛИ ДЛЯ ИНТЕРАКТИВНЫХ СЕТОК (Слайды 18, 19) --- */
+      .interactive-card {
+        transition: all 0.3s ease;
+        opacity: 0.5;
+        transform: scale(0.95);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        filter: blur(1px);
+      }
+      .interactive-card.active {
+        opacity: 1;
+        transform: scale(1.05);
+        border: 2px solid #e1007e;
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 10px 30px rgba(225, 0, 126, 0.2);
+        filter: blur(0);
+        z-index: 10;
+      }
+      .nav-controls {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 30px;
+        width: 100%;
+      }
+      .nav-btn-flat {
+        background: transparent;
+        border: 1px solid #e1007e;
+        color: #e1007e;
+        padding: 10px 20px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .nav-btn-flat:hover {
+        background: #e1007e;
+        color: #fff;
+      }
+
+      /* --- СТИЛИ ДЛЯ ВИКТОРИНЫ (Слайд 15) --- */
+      .quiz-wrapper {
+        width: 100%;
+        height: 480px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+      }
+      .quiz-track-container {
+        width: 80%;
+        height: 100%;
+        position: relative;
+      }
+      .quiz-track {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+      .quiz-card {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 30px;
+        text-align: center;
+        opacity: 0.3;
+        transform: scale(0.9);
+        filter: blur(2px);
+        transition: all 0.5s ease;
+        height: 280px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .quiz-card.active {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+        border-color: #e1007e;
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 10px 40px rgba(225, 0, 126, 0.2);
+      }
+      .quiz-btn {
+        padding: 10px 30px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        background: transparent;
+        color: #fff;
+        font-size: 18px;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-family: "Urbanist", sans-serif;
+        font-weight: 700;
+      }
+      .quiz-btn:hover:not(:disabled) {
+        border-color: #e1007e;
+        background: rgba(225, 0, 126, 0.1);
+      }
+      .quiz-btn.correct {
+        background: #10b981;
+        border-color: #10b981;
+      }
+      .quiz-btn.wrong {
+        background: #ef4444;
+        border-color: #ef4444;
+      }
+      .quiz-feedback {
+        font-size: 18px;
+        color: #ccc;
+        height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.5s;
+      }
+      .quiz-card.answered .quiz-feedback {
+        height: auto;
+        opacity: 1;
+        margin-top: 10px;
+      }
+      .quiz-controls {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .quiz-nav-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 1px solid #e1007e;
+        background: transparent;
+        color: #e1007e;
+        font-size: 24px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .quiz-nav-btn:hover {
+        background: #e1007e;
+        color: #fff;
+      }
+
+      /* СТИЛИ ДЛЯ ИКОНОК НА СЛАЙДЕ 22 */
+      .hover-accent {
+        transition: all 0.3s ease;
+        cursor: pointer;
+        color: #fff !important;
+      }
+      .hover-accent:hover {
+        color: #e1007e !important;
+        transform: scale(1.2);
+        text-shadow: 0 0 15px rgba(225, 0, 126, 0.6);
+      }
+
+      /* АНИМАЦИЯ ПЕРВОГО СЛАЙДА */
+      .typewriter-container {
+        margin-bottom: 50px;
+        text-align: left;
+        width: fit-content;
+      }
+      .typewriter-text {
+        font-family: "Urbanist", sans-serif;
+        font-size: 32px;
+        color: #e0e0e0;
+        font-weight: 300;
+        overflow: hidden;
+        border-right: 3px solid #e1007e;
+        white-space: nowrap;
+        margin: 0;
+        width: 0;
+        animation:
+          typing 3.5s steps(40, end) forwards,
+          blink-caret 0.75s step-end infinite;
+      }
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+      @keyframes blink-caret {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: #e1007e;
+        }
+      }
+      .glowing-btn {
+        background: transparent;
+        color: #fff;
+        font-family: "Urbanist", sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 20px 40px;
+        border: 2px solid #e1007e;
+        border-radius: 50px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        box-shadow:
+          0 0 15px rgba(225, 0, 126, 0.4),
+          inset 0 0 15px rgba(225, 0, 126, 0.2);
+        animation: pulse-glow 2s infinite;
+      }
+      .glowing-btn:hover {
+        background: #e1007e;
+        color: #fff;
+        box-shadow: 0 0 30px rgba(225, 0, 126, 0.8);
+        transform: scale(1.05);
+      }
+      @keyframes pulse-glow {
+        0% {
+          box-shadow: 0 0 15px rgba(225, 0, 126, 0.4);
+        }
+        50% {
+          box-shadow: 0 0 25px rgba(225, 0, 126, 0.7);
+        }
+        100% {
+          box-shadow: 0 0 15px rgba(225, 0, 126, 0.4);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- СЛАЙД 1: Adaptation day -->
+    <div
+      class="slide-container"
+      id="slide1"
+      style="
+        overflow: hidden;
+        background-color: #1a1a1a;
+        align-items: flex-start;
+        padding-left: 80px;
+      "
+    >
+      <div
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 0;
+        "
+      >
+        <img
+          src=""
+          style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6"
+        />
+        <div
+          style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+              90deg,
+              #1a1a1a 0%,
+              rgba(26, 26, 26, 0.8) 50%,
+              rgba(26, 26, 26, 0.2) 100%
+            );
+          "
+        ></div>
+      </div>
+
+      <div
+        class="content-area title-layout"
+        style="
+          z-index: 1;
+          align-items: flex-start;
+          text-align: left;
+          width: 100%;
+        "
+      >
+        <h1
+          style="
+            font-size: 90px;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            line-height: 1;
+          "
+        >
+          <span style="color: #fff">ADAPTATION</span> <br />
+          <span style="color: #e1007e">DAY</span>
+        </h1>
+        <div class="typewriter-container">
+          <p class="typewriter-text">
+            Твой уверенный старт: Поддержка и драйв с первых минут
+          </p>
+        </div>
+        <button
+          onclick="
+            document
+              .getElementById('slide2')
+              .scrollIntoView({ behavior: 'smooth' })
+          "
+          class="glowing-btn"
+        >
+          Сильная команда начинается с тебя
+        </button>
+      </div>
+    </div>
+
+    <!-- СЛАЙД 2: Наши Цели -->
+    <div class="slide-container" id="slide2">
+      <h2 class="slide-title">Наши Цели</h2>
+      <div class="content-area">
+        <ul class="custom-list" style="max-width: 900px; margin: 0 auto">
+          <li style="font-size: 32px; margin-bottom: 40px">
+            <strong>Познакомить вас:</strong> С компанией, командой и
+            корпоративной культурой.
+          </li>
+          <li style="font-size: 32px; margin-bottom: 40px">
+            <strong>Показать, что вы не одни:</strong> Вас поддержат на каждом
+            этапе.
+          </li>
+          <li style="font-size: 32px; margin-bottom: 40px">
+            <strong>Сократить период:</strong> Сделать адаптацию максимально
+            простой.
+          </li>
+          <li style="font-size: 32px">
+            <strong>Заложить основу:</strong> Для успешного старта и дальнейшего
+            развития.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- СЛАЙД 3: Миссия и Суть Бренда -->
+    <div class="slide-container" id="slide3">
+      <h2 class="slide-title">
+        Миссия и Суть Бренда <span class="accent">О!</span>
+      </h2>
+      <div class="content-area">
+        <div class="two-column">
+          <div class="card" style="height: 100%; border-top: 5px solid #e1007e">
+            <h3>Миссия — Удовольствие</h3>
+            <p style="font-size: 24px; font-weight: 300">
+              Используя современные технологии, мы даем людям то, что сделает их
+              жизнь проще и подарит удовольствие от общения.
+            </p>
+          </div>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 30px;
+              height: 100%;
+            "
+          >
+            <div class="card" style="flex: 1">
+              <h3 style="font-size: 24px">Суть бренда — Каждому!</h3>
+              <p>
+                Каждому — то, чего он хочет. Каждому — то, к чему он стремится.
+              </p>
+            </div>
+            <div
+              class="card"
+              style="
+                flex: 1;
+                background: rgba(225, 0, 126, 0.1);
+                border-color: rgba(225, 0, 126, 0.3);
+              "
+            >
+              <h3 style="font-size: 24px">Наше обещание — Радость</h3>
+              <p>Каждый день мы понимаем, удивляем и радуем наших абонентов.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- СЛАЙД 4: История Роста (АНИМИРОВАННЫЙ ГРАФИК) -->
+    <div class="slide-container" id="slide4">
+      <h2 class="slide-title">История Роста — Всё Возможно!</h2>
+      <div class="content-area">
+        <div class="two-column">
+          <div>
+            <h3 style="font-size: 32px">Лидерство в действии</h3>
+            <p style="margin-bottom: 20px">
+              За 16 лет мы прошли путь от новичка до лидера рынка мобильной
+              связи Кыргызстана.
+            </p>
+            <div class="card" style="background: rgba(225, 0, 126, 0.1)">
+              <p>
+                В нашей компании каждый может повторить этот успех в своей
+                карьере. Главное — скорость и стремление быть первым.
+              </p>
+              <p style="margin-top: 15px; font-weight: bold; color: #e1007e">
+                Ты в команде победителей!
+              </p>
+            </div>
+            <button class="btn-replay" id="raceBtn" onclick="startRace()">
+              <i class="fa-solid fa-play"></i> Запустить график
+            </button>
+          </div>
+
+          <div class="chart-container">
+            <div class="year-display" id="yearDisplay">2010</div>
+            <div class="chart-bars">
+              <div class="racing-bar-row" id="row-o">
+                <div class="racing-bar-label">O!</div>
+                <div class="racing-bar-track">
+                  <div class="racing-bar color-o" id="bar-o" style="width: 10%">
+                    <span class="racing-bar-value" id="val-o">0.5M</span>
+                  </div>
+                </div>
+              </div>
+              <div class="racing-bar-row" id="row-mega">
+                <div class="racing-bar-label">Mega</div>
+                <div class="racing-bar-track">
+                  <div
+                    class="racing-bar color-mega"
+                    id="bar-mega"
+                    style="width: 40%"
+                  >
+                    <span class="racing-bar-value" id="val-mega">2.0M</span>
+                  </div>
+                </div>
+              </div>
+              <div class="racing-bar-row" id="row-beeline">
+                <div class="racing-bar-label">Beeline</div>
+                <div class="racing-bar-track">
+                  <div
+                    class="racing-bar color-beeline"
+                    id="bar-beeline"
+                    style="width: 38%"
+                  >
+                    <span class="racing-bar-value" id="val-beeline">1.9M</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- СЛАЙД 5: WELCOME ZONE -->
+    <div class="slide-container" id="slide5">
+      <div
+        class="content-area"
+        style="
+          text-align: center;
+          justify-content: center;
+          display: flex;
+          align-items: center;
+          height: 100%;
+        "
+      >
+        <h1
+          style="
+            font-size: 100px;
+            color: #fff;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin: 0;
+          "
+        >
+          <span
+            style="
+              color: #e1007e;
+              display: block;
+              font-size: 120px;
+              line-height: 0.9;
+            "
+            >WELCOME</span
+          >
+          ZONE
+        </h1>
+      </div>
+    </div>
+
+    <!-- СЛАЙД 6: Структура Команды -->
+    <div class="slide-container" id="slide6">
+      <div id="react-slide-content" style="width: 100%; height: 100%"></div>
+    </div>
+
+    <!-- СЛАЙД 7: Видео-знакомство (Гульназ) -->
+    <div class="slide-container" id="slide7">
+      <h2 class="slide-title">Видео-знакомство</h2>
+      <div class="content-area">
+        <div
+          class="two-column"
+          style="align-items: center; justify-items: center"
+        >
+          <div style="width: 100%">
+            <h2 style="color: #fff; font-size: 56px; margin-bottom: 20px">
+              Гульназ Шеримбекова
+            </h2>
+            <h3 style="color: #e1007e; font-size: 32px; margin-bottom: 30px">
+              Специальное обращение
+            </h3>
+            <p style="font-size: 24px; line-height: 1.5; color: #ccc">
+              Смотрим видео-приветствие в формате TikTok.
+            </p>
+            <div
+              class="card"
+              style="
+                margin-top: 40px;
+                display: inline-block;
+                border-color: #e1007e;
+                background: rgba(225, 0, 126, 0.1);
+              "
+            >
+              <p style="font-size: 22px; font-weight: 600">
+                <i
+                  class="fa-brands fa-tiktok"
+                  style="margin-right: 12px; font-size: 28px"
+                ></i>
+                Play Video
+              </p>
+            </div>
+          </div>
+          <div
+            style="
+              position: relative;
+              width: 340px;
+              height: 600px;
+              background: #000;
+              border: 8px solid #333;
+              border-radius: 40px;
+              overflow: hidden;
+              box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            "
+          >
+            <img
+              src=""
+              alt="TikTok Video Placeholder"
+              style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7"
+            />
+            <div
+              style="position: absolute; bottom: 20px; left: 15px; right: 60px"
+            >
+              <div
+                style="font-weight: bold; font-size: 14px; margin-bottom: 5px"
+              >
+                @gulnaz_sherimbekova
+              </div>
+              <div style="font-size: 12px">
+                Рада приветствовать вас! #team #welcome
+              </div>
+            </div>
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 70px;
+                height: 70px;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                backdrop-filter: blur(5px);
+              "
+            >
+              <i
+                class="fa-solid fa-play"
+                style="font-size: 30px; margin-left: 5px"
+              ></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- СЛАЙД 8: HR-Отдел -->
+    <!-- <div class="slide-container" id="slide8">
+      <h2 class="slide-title">Знакомьтесь: HR-Отдел</h2>
+      <div class="content-area">
+        <p style="font-size: 26px; margin-bottom: 40px">
+          Люди, которые знают, как вы попали в компанию... и как вам здесь
+          остаться, развиться и кайфовать от работы!
+        </p>
+        <div class="grid-cards">
+          <div class="card">
+            <div class="icon"><i class="fa-solid fa-seedling"></i></div>
+            <h4>Адаптация</h4>
+            <p>Помогают чувствовать себя «в своей тарелке».</p>
+          </div>
+          <div class="card">
+            <div class="icon"><i class="fa-solid fa-circle-question"></i></div>
+            <h4>Вопросы</h4>
+            <p>Отвечают на всё: от «Где отпуск?» до «Как вырасти?».</p>
+          </div>
+          <div class="card">
+            <div class="icon"><i class="fa-solid fa-file-signature"></i></div>
+            <h4>Документы</h4>
+            <p>Оформляют справки, отпуска и прочую магию.</p>
+          </div>
+          <div class="card">
+            <div class="icon"><i class="fa-solid fa-face-smile"></i></div>
+            <h4>Культура</h4>
+            <p>Следят, чтобы было по-человечески классно.</p>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- СЛАЙД 9: IT-Отдел -->
+    <!-- <div class="slide-container" id="slide9">
+      <h2 class="slide-title">IT-Отдел</h2>
+      <div class="content-area">
+        <div class="two-column">
+          <div class="img-wrapper">
+            <i class="fa-solid fa-server"></i>
+            <div></div>
+          </div>
+          <div>
+            <h3>Те, кто всегда на связи</h3>
+            <p style="margin-bottom: 20px; font-style: italic">
+              (Даже если нет связи)
+            </p>
+            <ul class="custom-list">
+              <li>Подключают и настраивают рабочие места.</li>
+              <li>
+                Помогают при технических сбоях (компьютер, софт, телефония).
+              </li>
+              <li>Обеспечивают стабильность работы систем.</li>
+              <li>Решают заявки через службу поддержки.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- СЛАЙД 10: ГУКОЙКО -->
+    <!-- <div class="slide-container" id="slide10">
+      <h2 class="slide-title">ГУКОЙКО (Контроль качества)</h2>
+      <div class="content-area">
+        <div class="two-column">
+          <div>
+            <h3>Не бойтесь ГУКОЙКО!</h3>
+            <p style="margin-bottom: 30px">
+              Наоборот, задавайте вопросы, уточняйте, просите совета.
+            </p>
+            <div class="card" style="border-left: 5px solid #e1007e">
+              <h4>Кто они такие?</h4>
+              <p>
+                Это команда, которая оценивает, как вы общаетесь с клиентами,
+                помогает понять сильные стороны и зоны роста.
+                <br /><br /><strong class="accent"
+                  >Они не «карают», а поддерживают и учат делать лучше.</strong
+                >
+              </p>
+            </div>
+          </div>
+          <div class="img-wrapper">
+            <i class="fa-solid fa-headphones-simple"></i>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- СЛАЙД 11: Аналитики -->
+    <!-- <div class="slide-container" id="slide11">
+      <h2 class="slide-title">Аналитики</h2>
+      <div class="content-area">
+        <div class="two-column">
+          <div class="img-wrapper">
+            <i class="fa-solid fa-chart-line"></i>
+            <div></div>
+          </div>
+          <div>
+            <h3>Люди, которые всё считают</h3>
+            <p style="margin-bottom: 20px">
+              Они знают всё, что происходит в цифрах.
+            </p>
+            <ul class="custom-list">
+              <li>Анализируют статистику звонков, качество, тайминги.</li>
+              <li>Формируют отчёты по эффективности операторов.</li>
+              <li>
+                Помогают видеть реальную картину: где круто, а где можно лучше.
+              </li>
+              <li>Передают данные руководству для принятия решений.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- СЛАЙД 12: Супервайзеры -->
+    <div class="slide-container" id="slide12">
+      <h2 class="slide-title">Супервайзеры</h2>
+      <div class="content-area">
+        <p
+          style="
+            font-size: 24px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #ccc;
+          "
+        >
+          Ваша команда поддержки. Наставники и помощники в рабочем процессе.
+        </p>
+        <div
+          class="grid-cards"
+          style="grid-template-columns: repeat(3, 1fr); gap: 40px"
+        >
+          <div class="person-card">
+            <div class="photo-area">
+              <img src="" alt="Назима Бурханова" />
+            </div>
+            <div class="info-area">
+              <h4>Назима Бурханова</h4>
+              <p>Старший специалист ИСС | GTS</p>
+            </div>
+          </div>
+          <div class="person-card">
+            <div class="photo-area">
+              <img src="" alt="Айназик Атапова" />
+            </div>
+            <div class="info-area">
+              <h4>Айназик Атапова</h4>
+              <p>Старший специалист ИСС</p>
+            </div>
+          </div>
+          <div class="person-card">
+            <div class="photo-area">
+              <img src="" alt="Мияева Айгерим" />
+            </div>
+            <div class="info-area">
+              <h4>Мияева Айгерим</h4>
+              <p>Старший специалист ИСС</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- СЛАЙД 13: Видео-знакомство (Бакберди) -->
+    <div class="slide-container" id="slide13">
+      <h2 class="slide-title">Видео-знакомство</h2>
+      <div class="content-area">
+        <div
+          class="two-column"
+          style="align-items: center; justify-items: center"
+        >
+          <div style="width: 100%">
+            <h2 style="color: #fff; font-size: 56px; margin-bottom: 20px">
+              Бакберди Айтбеков
+            </h2>
+            <h3 style="color: #e1007e; font-size: 32px; margin-bottom: 30px">
+              Специалист
+            </h3>
+            <p style="font-size: 24px; line-height: 1.5; color: #ccc">
+              Посмотрите специальное видео-обращение в формате TikTok.
+            </p>
+            <div
+              class="card"
+              style="
+                margin-top: 40px;
+                display: inline-block;
+                border-color: #e1007e;
+                background: rgba(225, 0, 126, 0.1);
+              "
+            >
+              <p style="font-size: 22px; font-weight: 600">
+                <i
+                  class="fa-brands fa-tiktok"
+                  style="margin-right: 12px; font-size: 28px"
+                ></i>
+                Смотрим видео!
+              </p>
+            </div>
+          </div>
+          <div
+            style="
+              position: relative;
+              width: 340px;
+              height: 600px;
+              background: #000;
+              border: 8px solid #333;
+              border-radius: 40px;
+              overflow: hidden;
+              box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            "
+          >
+            <img
+              src=""
+              alt="TikTok Video Placeholder"
+              style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7"
+            />
+            <div
+              style="position: absolute; bottom: 20px; left: 15px; right: 60px"
+            >
+              <div
+                style="font-weight: bold; font-size: 14px; margin-bottom: 5px"
+              >
+                @bakberdi_aitbekov
+              </div>
+              <div style="font-size: 12px">
+                Добро пожаловать в команду! #welcome #team
+              </div>
+            </div>
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 70px;
+                height: 70px;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                backdrop-filter: blur(5px);
+              "
+            >
+              <i
+                class="fa-solid fa-play"
+                style="font-size: 30px; margin-left: 5px"
+              ></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- СЛАЙД 14: Вы - наша ценность -->
+    <div class="slide-container" id="slide14">
+      <div class="content-area" style="text-align: center">
+        <h1 style="font-size: 60px; color: #e1007e">ВЫ — НАША ЦЕННОСТЬ</h1>
+        <p style="font-size: 28px; max-width: 900px; margin: 20px auto 50px">
+          С первого дня вы часть команды, которая делает важное дело. Мы не
+          просто нанимаем сотрудников — мы растим профессионалов.
+        </p>
+
+        <div class="grid-cards" style="text-align: left">
+          <div class="card">
+            <h4><i class="fa-solid fa-eye accent"></i> Свежий взгляд</h4>
+            <p>Новички часто видят то, что опытные уже не замечают.</p>
+          </div>
+          <div class="card">
+            <h4><i class="fa-solid fa-id-badge accent"></i> Лицо компании</h4>
+            <p>Вы представляете бренд для каждого клиента.</p>
+          </div>
+          <div class="card">
+            <h4><i class="fa-solid fa-star accent"></i> Репутация</h4>
+            <p>Каждое ваше общение формирует репутацию бренда.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- СЛАЙД 15: Миф или Правда (ИНТЕРАКТИВНЫЙ ВЕРТИКАЛЬНЫЙ) -->
+    <div class="slide-container" id="slide15">
+      <h2 class="slide-title">Миф или Правда?</h2>
+      <div class="content-area">
+        <div class="quiz-wrapper">
+          <div class="quiz-track-container">
+            <div class="quiz-track" id="quizTrack">
+              <!-- Вопрос 1 -->
+              <div class="quiz-card active" data-correct="myth">
+                <p class="quiz-question">
+                  1. График работы абсолютно жесткий и его нельзя поменять.
+                </p>
+                <div class="quiz-options">
+                  <button class="quiz-btn" onclick="checkAnswer(this, 'myth')">
+                    МИФ
+                  </button>
+                  <button class="quiz-btn" onclick="checkAnswer(this, 'truth')">
+                    ПРАВДА
+                  </button>
+                </div>
+                <div class="quiz-feedback">
+                  Правильно! График гибкий, можно меняться сменами с коллегами.
+                </div>
+              </div>
+
+              <!-- Вопрос 2 -->
+              <div class="quiz-card" data-correct="myth">
+                <p class="quiz-question">
+                  2. За ошибки на линии всегда сразу штрафуют.
+                </p>
+                <div class="quiz-options">
+                  <button class="quiz-btn" onclick="checkAnswer(this, 'myth')">
+                    МИФ
+                  </button>
+                  <button class="quiz-btn" onclick="checkAnswer(this, 'truth')">
+                    ПРАВДА
+                  </button>
+                </div>
+                <div class="quiz-feedback">
+                  Верно! Мы сначала обучаем и даем обратную связь, штрафы —
+                  крайняя мера.
+                </div>
+              </div>
+
+              <!-- Вопрос 3 -->
+              <div class="quiz-card" data-correct="truth">
+                <p class="quiz-question">
+                  3. Руководители всегда открыты к новым идеям.
+                </p>
+                <div class="quiz-options">
+                  <button class="quiz-btn" onclick="checkAnswer(this, 'myth')">
+                    МИФ
+                  </button>
+                  <button class="quiz-btn" onclick="checkAnswer(this, 'truth')">
+                    ПРАВДА
+                  </button>
+                </div>
+                <div class="quiz-feedback">
+                  Абсолютно верно! Лучшие идеи часто приходят от тех, кто
+                  работает с клиентами.
+                </div>
+              </div>
+
+              <!-- Вопрос 4 -->
+              <div class="quiz-card" data-correct="truth">
+                <p class="quiz-question">
+                  4. Карьерный рост возможен уже в первые полгода.
+                </p>
+                <div class="quiz-options">
+                  <button class="quiz-btn" onclick="checkAnswer(this, 'myth')">
+                    МИФ
+                  </button>
+                  <button class="quiz-btn" onclick="checkAnswer(this, 'truth')">
+                    ПРАВДА
+                  </button>
+                </div>
+                <div class="quiz-feedback">
+                  Правда! Многие наши менеджеры начинали операторами.
+                </div>
+              </div>
+
+              <!-- Вопрос 5 -->
+              <div class="quiz-card" data-correct="myth">
+                <p class="quiz-question">
+                  5. Супервайзеры нужны только для контроля.
+                </p>
+                <div class="quiz-options">
+                  <button class="quiz-btn" onclick="checkAnswer(this, 'myth')">
+                    МИФ
+                  </button>
+                  <button class="quiz-btn" onclick="checkAnswer(this, 'truth')">
+                    ПРАВДА
+                  </button>
+                </div>
+                <div class="quiz-feedback">
+                  Миф! Супервайзер — это наставник, который помогает вам расти.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="quiz-controls">
+            <button class="quiz-nav-btn" onclick="scrollQuiz(-1)">
+              <i class="fa-solid fa-chevron-up"></i>
+            </button>
+            <button class="quiz-nav-btn" onclick="scrollQuiz(1)">
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- СЛАЙД 16: Интерактив -->
+    <div class="slide-container" id="slide16">
+      <h2 class="slide-title">Интерактив</h2>
+      <div
+        class="content-area"
+        style="justify-content: center; align-items: center"
+      >
+        <div
+          class="card"
+          style="
+            width: 70%;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: 3px solid #e1007e;
+            background: rgba(225, 0, 126, 0.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+          "
+        >
+          <h3 style="font-size: 48px; margin-bottom: 30px">Игра</h3>
+          <h4 style="font-size: 36px; color: #fff; line-height: 1.4">
+            "МИССИЯ: АДАПТАЦИЯ.<br />СОБЕРИ ПОДПИСИ"
+          </h4>
+          <p style="margin-top: 30px; font-size: 24px; color: #ccc">
+            Время познакомиться с коллегами!
+          </p>
+          <div style="margin-top: 40px; font-size: 70px; color: #e1007e">
+            <i class="fa-solid fa-users-viewfinder"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- СЛАЙД 17: Привет от опытных сотрудников -->
+    <div class="slide-container" id="slide17">
+      <h2 class="slide-title">Привет от опытных сотрудников</h2>
+      <div class="content-area">
+        <p
+          style="
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ccc;
+          "
+        >
+          «Сколько времени вам потребовалось, чтобы почувствовать себя уверенно
+          на рабочем месте?»
+        </p>
+
+        <div
+          class="grid-cards"
+          style="
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            justify-items: center;
+            align-items: center;
+          "
+        >
+          <div
+            style="
+              position: relative;
+              width: 270px;
+              height: 480px;
+              background: #000;
+              border-radius: 20px;
+              overflow: hidden;
+              border: 4px solid #333;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            "
+          >
+            <img
+              src=""
+              style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8"
+              alt="Видео отзыв 1"
+            />
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              "
+            >
+              <i
+                class="fa-solid fa-circle-play"
+                style="font-size: 50px; color: rgba(255, 255, 255, 0.8)"
+              ></i>
+            </div>
+            <div style="position: absolute; bottom: 15px; left: 15px">
+              <div style="font-size: 12px; font-weight: bold">
+                @employee_one
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              position: relative;
+              width: 270px;
+              height: 480px;
+              background: #000;
+              border-radius: 20px;
+              overflow: hidden;
+              border: 4px solid #333;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            "
+          >
+            <img
+              src=""
+              style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8"
+              alt="Видео отзыв 2"
+            />
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              "
+            >
+              <i
+                class="fa-solid fa-circle-play"
+                style="font-size: 50px; color: rgba(255, 255, 255, 0.8)"
+              ></i>
+            </div>
+            <div style="position: absolute; bottom: 15px; left: 15px">
+              <div style="font-size: 12px; font-weight: bold">
+                @employee_two
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              position: relative;
+              width: 270px;
+              height: 480px;
+              background: #000;
+              border-radius: 20px;
+              overflow: hidden;
+              border: 4px solid #333;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            "
+          >
+            <img
+              src=""
+              style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8"
+              alt="Видео отзыв 3"
+            />
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              "
+            >
+              <i
+                class="fa-solid fa-circle-play"
+                style="font-size: 50px; color: rgba(255, 255, 255, 0.8)"
+              ></i>
+            </div>
+            <div style="position: absolute; bottom: 15px; left: 15px">
+              <div style="font-size: 12px; font-weight: bold">
+                @employee_three
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- СЛАЙД 18: Внутренняя кухня (ИНТЕРАКТИВНЫЙ) -->
+    <div class="slide-container" id="slide18">
+      <h2 class="slide-title">Внутренняя кухня</h2>
+      <div class="content-area">
+        <div
+          class="grid-cards"
+          id="kitchen-grid"
+          style="grid-template-columns: repeat(2, 1fr); gap: 40px"
+        >
+          <div
+            class="card interactive-card"
+            style="display: flex; align-items: center; gap: 20px"
+          >
+            <div class="icon">
+              <i class="fa-solid fa-calendar-check" style="font-size: 50px"></i>
+            </div>
+            <div>
+              <h4 style="margin-bottom: 5px">График</h4>
+              <p style="font-size: 18px">
+                Твой режим работы. Соблюдай тайминг входа и выхода.
+              </p>
+            </div>
+          </div>
+          <div
+            class="card interactive-card"
+            style="display: flex; align-items: center; gap: 20px"
+          >
+            <div class="icon">
+              <i class="fa-brands fa-telegram" style="font-size: 50px"></i>
+            </div>
+            <div>
+              <h4 style="margin-bottom: 5px">Telegram</h4>
+              <p style="font-size: 18px">
+                Главный мессенджер. Все новости и объявления в чатах.
+              </p>
+            </div>
+          </div>
+          <div
+            class="card interactive-card"
+            style="display: flex; align-items: center; gap: 20px"
+          >
+            <div class="icon">
+              <i class="fa-solid fa-rotate" style="font-size: 50px"></i>
+            </div>
+            <div>
+              <h4 style="margin-bottom: 5px">Замены</h4>
+              <p style="font-size: 18px">
+                Нужен выходной? Договорись с коллегой и сообщи супервайзеру.
+              </p>
+            </div>
+          </div>
+          <div
+            class="card interactive-card"
+            style="display: flex; align-items: center; gap: 20px"
+          >
+            <div class="icon">
+              <i class="fa-solid fa-clock" style="font-size: 50px"></i>
+            </div>
+            <div>
+              <h4 style="margin-bottom: 5px">Перерывы</h4>
+              <p style="font-size: 18px">
+                Следи за временем отдыха. AUX — только по делу.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="nav-controls">
+          <button class="nav-btn-flat" onclick="navigateGrid('kitchen', -1)">
+            <i class="fa-solid fa-arrow-left"></i> Назад
+          </button>
+          <button class="nav-btn-flat" onclick="navigateGrid('kitchen', 1)">
+            Вперед <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- СЛАЙД 19: Негласные Правила (ИНТЕРАКТИВНЫЙ) -->
+    <div class="slide-container" id="slide19">
+      <h2 class="slide-title" style="margin-bottom: 20px">
+        Негласные правила Контакт-Центра
+      </h2>
+      <div class="content-area">
+        <div
+          class="grid-cards"
+          id="rules-grid"
+          style="gap: 20px; grid-template-columns: repeat(3, 1fr)"
+        >
+          <div class="card interactive-card" style="padding: 20px">
+            <h4 style="font-size: 18px; color: #e1007e">
+              1. Место не закрепляется
+            </h4>
+            <p style="font-size: 16px">Садимся на свободные места.</p>
+          </div>
+          <div class="card interactive-card" style="padding: 20px">
+            <h4 style="font-size: 18px; color: #e1007e">2. Поел — убери</h4>
+            <p style="font-size: 16px">Всё общее.</p>
+          </div>
+          <div class="card interactive-card" style="padding: 20px">
+            <h4 style="font-size: 18px; color: #e1007e">3. Сменка</h4>
+            <p style="font-size: 16px">
+              Это правило. Уличную обувь — в шкафчик.
+            </p>
+          </div>
+          <div class="card interactive-card" style="padding: 20px">
+            <h4 style="font-size: 18px; color: #e1007e">
+              4. Гарнитура = Тишина
+            </h4>
+            <p style="font-size: 16px">
+              В наушниках — значит на линии. Не отвлекаем.
+            </p>
+          </div>
+          <div class="card interactive-card" style="padding: 20px">
+            <h4 style="font-size: 18px; color: #e1007e">5. Не в Open Space</h4>
+            <p style="font-size: 16px">
+              Личное обсуждение или смех — на кухню.
+            </p>
+          </div>
+          <div class="card interactive-card" style="padding: 20px">
+            <h4 style="font-size: 18px; color: #e1007e">6. Стол — не склад</h4>
+            <p style="font-size: 16px">Личные вещи в шкафчик.</p>
+          </div>
+          <div class="card interactive-card" style="padding: 20px">
+            <h4 style="font-size: 18px; color: #e1007e">
+              7. Не знаешь — спроси
+            </h4>
+          </div>
+          <div class="card interactive-card" style="padding: 20px">
+            <h4 style="font-size: 18px; color: #e1007e">8. Закрывайте двери</h4>
+          </div>
+          <div class="card interactive-card" style="padding: 20px">
+            <h4 style="font-size: 18px; color: #e1007e">
+              9. Не трогайте колонку в уборной
+            </h4>
+          </div>
+        </div>
+        <div class="nav-controls">
+          <button class="nav-btn-flat" onclick="navigateGrid('rules', -1)">
+            <i class="fa-solid fa-arrow-left"></i> Назад
+          </button>
+          <button class="nav-btn-flat" onclick="navigateGrid('rules', 1)">
+            Вперед <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- СЛАЙД 20: Квест (НОВЫЙ) -->
+    <div class="slide-container" id="slide20">
+      <h2 class="slide-title">Квест "Офисное выживание"</h2>
+      <div class="content-area" style="text-align: center">
+        <div
+          class="card"
+          style="
+            display: inline-block;
+            padding: 50px;
+            background: rgba(225, 0, 126, 0.1);
+            border: 2px solid #e1007e;
+          "
+        >
+          <i
+            class="fa-solid fa-map-location-dot"
+            style="font-size: 80px; color: #fff; margin-bottom: 30px"
+          ></i>
+          <h3 style="font-size: 36px; margin-bottom: 20px">
+            Знакомство с офисом в формате игры
+          </h3>
+          <p style="font-size: 24px; margin-bottom: 30px">
+            Ищите QR-коды, выполняйте задания и узнавайте секреты офиса!
+          </p>
+          <div style="font-size: 28px; font-weight: bold; color: #e1007e">
+            <i class="fa-solid fa-trophy"></i> Победителям — подарок!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- СЛАЙД 21: Лайфхаки для выживания (КАРУСЕЛЬ) -->
+    <div class="slide-container" id="slide21">
+      <h2 class="slide-title">Лайфхаки для выживания</h2>
+      <div class="content-area">
+        <div class="carousel-wrapper">
+          <button class="carousel-btn prev" onclick="moveCarousel(-1)">
+            &#10094;
+          </button>
+          <div class="carousel-track-container">
+            <ul class="carousel-track" id="track">
+              <li class="carousel-card">
+                <div class="icon-box"><i class="fa-solid fa-bolt"></i></div>
+                <h4>Как работать эффективно</h4>
+                <p>Быстрое копирование номера — двойной клик в Naumen.</p>
+              </li>
+              <li class="carousel-card">
+                <div class="icon-box"><i class="fa-solid fa-key"></i></div>
+                <h4>Как работать эффективно</h4>
+                <p>Сохранять пароли для входа в CRM.</p>
+              </li>
+              <li class="carousel-card">
+                <div class="icon-box"><i class="fa-solid fa-desktop"></i></div>
+                <h4>Как работать эффективно</h4>
+                <p>
+                  Периодически работать за разными компьютерами, чтобы нужные
+                  вкладки были открыты.
+                </p>
+              </li>
+              <li class="carousel-card">
+                <div class="icon-box">
+                  <i class="fa-solid fa-thumbtack"></i>
+                </div>
+                <h4>Как работать эффективно</h4>
+                <p>Закреплять важные CRM-программы для быстрого доступа.</p>
+              </li>
+              <li class="carousel-card">
+                <div class="icon-box"><i class="fa-solid fa-copy"></i></div>
+                <h4>Как работать эффективно</h4>
+                <p>
+                  Если ответ по заявке отображается частично, скопируйте текст и
+                  вставьте, чтобы увидеть его полностью.
+                </p>
+              </li>
+              <li class="carousel-card">
+                <div class="icon-box"><i class="fa-solid fa-headset"></i></div>
+                <h4>Как работать без ошибок</h4>
+                <p>Прослушивайте жалобы и звонки, чтобы не допускать ошибок.</p>
+              </li>
+              <li class="carousel-card">
+                <div class="icon-box">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <h4>Как сдать АТТ</h4>
+                <p>
+                  Следите за обновлениями кейсов — они 100% будут на аттестации.
+                </p>
+              </li>
+              <li class="carousel-card">
+                <div class="icon-box"><i class="fa-solid fa-star"></i></div>
+                <h4>Как работать без ошибок</h4>
+                <p>
+                  Пользуйтесь продуктами банка, например подпиской O!Prime,
+                  чтобы понимать начисление бонусов.
+                </p>
+              </li>
+            </ul>
+          </div>
+          <button class="carousel-btn next" onclick="moveCarousel(1)">
+            &#10095;
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- СЛАЙД 22: Мотивация -->
+    <div class="slide-container" id="slide22">
+      <h2 class="slide-title">Мотивашки и Плюшки</h2>
+      <div class="content-area" style="text-align: center">
+        <h3 style="font-size: 40px; margin-bottom: 40px; color: #fff">
+          А какие мотивашки у нас есть?
+        </h3>
+        <p style="font-size: 32px; font-style: italic; color: #e1007e">
+          «Бонусы, скидки, вкусные плюшки — <br />да, это тоже про работу»
+        </p>
+
+        <div
+          style="
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            font-size: 70px;
+            color: #fff;
+          "
+        >
+          <i class="fa-solid fa-gift hover-accent" title="Подарки"></i>
+          <i class="fa-solid fa-percent hover-accent" title="Скидки"></i>
+          <i class="fa-solid fa-pizza-slice hover-accent" title="Еда"></i>
+          <i class="fa-solid fa-medal hover-accent" title="Награды"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- СЛАЙД 23: Финал (Спасибо) -->
+    <div class="slide-container" id="slide23">
+      <div class="content-area" style="text-align: center">
+        <h1 style="font-size: 100px; color: #e1007e; margin-bottom: 20px">
+          СПАСИБО!
+        </h1>
+        <h2 style="margin-bottom: 40px; font-size: 40px; color: #fff">
+          Добро пожаловать в команду!
+        </h2>
+
+        <div class="card" style="display: inline-block; padding: 30px">
+          <p style="font-size: 24px; color: #ccc">HR-отдел: 1234</p>
+          <p style="font-size: 24px; color: #ccc">IT-support: 5678</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- СЛАЙД 24: Q&A (Slido) -->
+    <div class="slide-container" id="slide24">
+      <h2 class="slide-title">Q&A Session</h2>
+      <div class="content-area">
+        <div class="two-column" style="align-items: stretch; height: 100%">
+          <div style="padding: 20px">
+            <h3 style="color: #fff; margin-bottom: 20px">Задавайте вопросы</h3>
+            <p style="font-size: 20px; color: #ccc; margin-bottom: 40px">
+              Анонимно или от своего имени.
+            </p>
+
+            <div
+              style="
+                background: #fff;
+                padding: 20px;
+                border-radius: 12px;
+                display: inline-block;
+              "
+            >
+              <i
+                class="fa-solid fa-qrcode"
+                style="font-size: 150px; color: #000"
+              ></i>
+            </div>
+            <p style="margin-top: 20px; color: #e1007e; font-weight: bold">
+              #JoinSlido
+            </p>
+          </div>
+
+          <div
+            style="
+              border-radius: 12px;
+              overflow: hidden;
+              border: 1px solid rgba(255, 255, 255, 0.2);
+              background: #f8f9fa;
+              height: 100%;
+              position: relative;
+            "
+          >
+            <iframe
+              src="https://wall.sli.do/event/demo"
+              width="100%"
+              height="100%"
+              frameborder="0"
+              scrolling="no"
+              style="border: none; position: absolute; top: 0; left: 0"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // --- СКРИПТ ДЛЯ ГРАФИКА (Слайд 4) ---
+      const dataHistory = [
+        { year: 2010, o: 0.2, mega: 2.1, beeline: 2.0 },
+        { year: 2011, o: 0.5, mega: 2.2, beeline: 2.1 },
+        { year: 2012, o: 0.9, mega: 2.4, beeline: 2.2 },
+        { year: 2013, o: 1.2, mega: 2.5, beeline: 2.3 },
+        { year: 2014, o: 1.8, mega: 2.6, beeline: 2.4 },
+        { year: 2015, o: 2.5, mega: 2.7, beeline: 2.5 },
+        { year: 2016, o: 3.1, mega: 2.8, beeline: 2.6 },
+        { year: 2017, o: 3.8, mega: 2.9, beeline: 2.7 },
+        { year: 2018, o: 4.5, mega: 3.0, beeline: 2.8 },
+        { year: 2019, o: 5.2, mega: 3.1, beeline: 2.9 },
+        { year: 2020, o: 5.9, mega: 3.2, beeline: 3.0 },
+        { year: 2021, o: 6.3, mega: 3.2, beeline: 3.0 },
+        { year: 2022, o: 6.7, mega: 3.3, beeline: 3.1 },
+        { year: 2023, o: 7.0, mega: 3.3, beeline: 3.1 },
+        { year: 2024, o: 7.3, mega: 3.4, beeline: 3.2 },
+        { year: 2025, o: 7.5, mega: 3.5, beeline: 3.2 },
+      ];
+
+      let currentYearIndex = 0;
+      let raceInterval;
+
+      function updateChart(data) {
+        if (!document.getElementById("yearDisplay")) return;
+        document.getElementById("yearDisplay").innerText = data.year;
+        const maxScale = 8.0;
+        let items = [
+          {
+            id: "o",
+            val: data.o,
+            row: document.getElementById("row-o"),
+            bar: document.getElementById("bar-o"),
+            text: document.getElementById("val-o"),
+          },
+          {
+            id: "mega",
+            val: data.mega,
+            row: document.getElementById("row-mega"),
+            bar: document.getElementById("bar-mega"),
+            text: document.getElementById("val-mega"),
+          },
+          {
+            id: "beeline",
+            val: data.beeline,
+            row: document.getElementById("row-beeline"),
+            bar: document.getElementById("bar-beeline"),
+            text: document.getElementById("val-beeline"),
+          },
+        ];
+        items.sort((a, b) => b.val - a.val);
+        items.forEach((item, index) => {
+          if (item.row && item.bar && item.text) {
+            item.row.style.top = index * 70 + 50 + "px";
+            const widthPercent = (item.val / maxScale) * 100;
+            item.bar.style.width = widthPercent + "%";
+            item.text.innerText = item.val.toFixed(1) + "M";
+          }
+        });
+      }
+
+      function startRace() {
+        const btn = document.getElementById("raceBtn");
+        if (btn)
+          btn.innerHTML =
+            '<i class="fa-solid fa-spinner fa-spin"></i> Анимация...';
+
+        if (raceInterval) clearInterval(raceInterval);
+        currentYearIndex = 0;
+
+        const rows = document.querySelectorAll(".racing-bar-row");
+        const bars = document.querySelectorAll(".racing-bar");
+
+        rows.forEach((r) => (r.style.transition = "none"));
+        bars.forEach((b) => (b.style.transition = "none"));
+
+        updateChart(dataHistory[0]);
+
+        setTimeout(() => {
+          rows.forEach((r) => (r.style.transition = "top 2s ease-in-out"));
+          bars.forEach((b) => (b.style.transition = "width 2s linear"));
+
+          currentYearIndex = 1;
+          raceInterval = setInterval(() => {
+            if (currentYearIndex >= dataHistory.length) {
+              clearInterval(raceInterval);
+              if (btn)
+                btn.innerHTML =
+                  '<i class="fa-solid fa-rotate-right"></i> Повторить';
+              return;
+            }
+            updateChart(dataHistory[currentYearIndex]);
+            currentYearIndex++;
+          }, 3000);
+        }, 100);
+      }
+
+      // --- СКРИПТ ДЛЯ КАРУСЕЛИ (Слайд 21 - Лайфхаки) ---
+      let currentIndex = 0;
+
+      function updateActiveCard() {
+        const cards = document.querySelectorAll(".carousel-card");
+        cards.forEach((c) => c.classList.remove("active"));
+        if (cards[currentIndex]) {
+          cards[currentIndex].classList.add("active");
+        }
+      }
+
+      function moveCarousel(direction) {
+        const track = document.getElementById("track");
+        const cards = document.querySelectorAll(".carousel-card");
+        const cardWidth = 320 + 30; // ширина карточки + gap
+        const totalCards = cards.length;
+        const maxIndex = totalCards - 1;
+
+        currentIndex += direction;
+
+        if (currentIndex < 0) currentIndex = 0;
+        if (currentIndex > maxIndex) currentIndex = maxIndex;
+
+        const offset = -(currentIndex * cardWidth);
+        if (track) {
+          track.style.transform = `translateX(${offset}px)`;
+          updateActiveCard();
+        }
+      }
+
+      // --- ВОССТАНОВЛЕННЫЙ СКРИПТ ДЛЯ ИНТЕРАКТИВНЫХ СЕТОК (Слайды 18, 19) ---
+      const gridStates = {
+        kitchen: { index: 0, count: 4 },
+        rules: { index: 0, count: 9 },
+      };
+
+      function updateGrid(type) {
+        const container = document.getElementById(type + "-grid");
+        if (!container) return;
+        const cards = container.querySelectorAll(".interactive-card");
+        const state = gridStates[type];
+
+        cards.forEach((c, i) => {
+          c.classList.remove("active");
+          if (i === state.index) {
+            c.classList.add("active");
+          }
+        });
+      }
+
+      function navigateGrid(type, dir) {
+        const state = gridStates[type];
+        state.index += dir;
+
+        if (state.index < 0) state.index = 0;
+        if (state.index >= state.count) state.index = state.count - 1;
+
+        updateGrid(type);
+      }
+
+      // --- СКРИПТ ДЛЯ ВИКТОРИНЫ (Слайд 15) ---
+      let currentQuizIndex = 0;
+      const quizCardHeight = 280 + 40;
+
+      function scrollQuiz(direction) {
+        const track = document.getElementById("quizTrack");
+        const cards = document.querySelectorAll(".quiz-card");
+        const totalQuestions = cards.length;
+
+        currentQuizIndex += direction;
+        if (currentQuizIndex < 0) currentQuizIndex = 0;
+        if (currentQuizIndex >= totalQuestions)
+          currentQuizIndex = totalQuestions - 1;
+
+        if (track)
+          track.style.transform = `translateY(-${currentQuizIndex * quizCardHeight}px)`;
+
+        cards.forEach((card, index) => {
+          if (index === currentQuizIndex) {
+            card.classList.add("active");
+          } else {
+            card.classList.remove("active");
+          }
+        });
+      }
+
+      function checkAnswer(btn, answer) {
+        const card = btn.closest(".quiz-card");
+        const correctAnswer = card.getAttribute("data-correct");
+        const buttons = card.querySelectorAll(".quiz-btn");
+        buttons.forEach((b) => (b.disabled = true));
+
+        if (answer === correctAnswer) {
+          btn.classList.add("correct");
+        } else {
+          btn.classList.add("wrong");
+        }
+
+        card.classList.add("answered");
+      }
+
+      // ----------------------------------------------------
+      // ИНИЦИАЛИЗАЦИЯ ВСЕГО ПРИ ЗАГРУЗКЕ
+      // ----------------------------------------------------
+      document.addEventListener("DOMContentLoaded", () => {
+        setTimeout(() => {
+          // График
+          const rows = document.querySelectorAll(".racing-bar-row");
+          const bars = document.querySelectorAll(".racing-bar");
+          if (rows.length > 0) {
+            rows.forEach((r) => (r.style.transition = "none"));
+            bars.forEach((b) => (b.style.transition = "none"));
+            updateChart(dataHistory[0]);
+          }
+
+          // Карусель (Лайфхаки)
+          updateActiveCard();
+
+          // Сетки (Кухня и Правила)
+          updateGrid("kitchen");
+          updateGrid("rules");
+        }, 500);
+      });
+    </script>
+    <style>
+      #slide6 {
+        padding: 0 !important;
+        margin: 0 !important;
+        height: 100vh !important;
+        display: flex !important;
+        align-items: stretch !important;
+      }
+      #react-slide-content {
+        flex: 1;
+        height: 100% !important;
+      }
+    </style>
+    <link rel="stylesheet" href="./index-Brr0BY20.css" />
+    <script type="module" src="./index-CeoJAWgO.js"></script>
+  </body>
+</html>
