@@ -986,6 +986,7 @@
             </p>
             <div
               class="card"
+              onclick="document.getElementById('gulnazVideo').play()"
               style="
                 margin-top: 40px;
                 display: inline-block;
@@ -1014,11 +1015,13 @@
               box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
             "
           >
-            <img
-              src=""
-              alt="TikTok Video Placeholder"
-              style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7"
-            />
+            <video
+              id="gulnazVideo"
+              src="video-files/Gulnaz.mp4"
+              loop
+              playsinline
+              style="width: 100%; height: 100%; object-fit: cover"
+            ></video>
             <div
               style="position: absolute; bottom: 20px; left: 15px; right: 60px"
             >
@@ -1371,7 +1374,7 @@
               <!-- Вопрос 2 -->
               <div class="quiz-card" data-correct="myth">
                 <p class="quiz-question">
-                  2. За ошибки на линии всегда сразу штрафуют.
+                  2. За ошибки на линии всегда сразу депремируют.
                 </p>
                 <div class="quiz-options">
                   <button class="quiz-btn" onclick="checkAnswer(this, 'myth')">
@@ -1382,8 +1385,8 @@
                   </button>
                 </div>
                 <div class="quiz-feedback">
-                  Верно! Мы сначала обучаем и даем обратную связь, штрафы —
-                  крайняя мера.
+                  Верно! Мы сначала обучаем и даем обратную связь,
+                  депремирование — крайняя мера.
                 </div>
               </div>
 
@@ -1477,7 +1480,6 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
           "
         >
-          <h3 style="font-size: 48px; margin-bottom: 30px">Игра</h3>
           <h4 style="font-size: 36px; color: #fff; line-height: 1.4">
             "МИССИЯ: АДАПТАЦИЯ.<br />СОБЕРИ ПОДПИСИ"
           </h4>
@@ -2200,6 +2202,6 @@
       }
     </style>
     <link rel="stylesheet" href="./index-Brr0BY20.css" />
-    <script type="module" src="./index-CeoJAWgO.js"></script>
+    <script type="module" src="./index-C1Ms1j7b.js"></script>
   </body>
 </html>
