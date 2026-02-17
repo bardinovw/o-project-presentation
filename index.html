@@ -874,13 +874,11 @@
         pointer-events: none;
       }
       video {
-        pointer-events: auto; /* Разрешаем клики */
-        cursor: pointer; /* Показываем пальчик при наведении */
+        cursor: pointer; /* Чтобы при наведении на видео тоже появлялся «палец» */
       }
     </style>
   </head>
   <body>
-    <!-- СЛАЙД 1: Adaptation day -->
     <div
       class="slide-container"
       id="slide1"
@@ -960,7 +958,6 @@
       </div>
     </div>
 
-    <!-- СЛАЙД 2: Наши Цели -->
     <div class="slide-container" id="slide2">
       <h2 class="slide-title">Наши Цели</h2>
       <div class="content-area">
@@ -985,7 +982,6 @@
       </div>
     </div>
 
-    <!-- СЛАЙД 3: Миссия и Суть Бренда -->
     <div class="slide-container" id="slide3">
       <h2 class="slide-title">
         Миссия и Суть Бренда <span class="accent">О!</span>
@@ -1029,7 +1025,6 @@
       </div>
     </div>
 
-    <!-- СЛАЙД 4: История Роста (АНИМИРОВАННЫЙ ГРАФИК) -->
     <div class="slide-container" id="slide4">
       <h2 class="slide-title">История Роста — Всё Возможно!</h2>
       <div class="content-area">
@@ -1095,7 +1090,6 @@
       </div>
     </div>
 
-    <!-- СЛАЙД 5: WELCOME ZONE -->
     <div class="slide-container" id="slide5">
       <div
         class="content-area"
@@ -1130,12 +1124,10 @@
       </div>
     </div>
 
-    <!-- СЛАЙД 6: Структура Команды -->
     <div class="slide-container" id="slide6">
       <div id="react-slide-content" style="width: 100%; height: 100%"></div>
     </div>
 
-    <!-- СЛАЙД 7: Видео-знакомство (Гульназ) -->
     <div class="slide-container" id="slide7">
       <h2 class="slide-title">Видео-знакомство</h2>
       <div class="content-area">
@@ -1199,161 +1191,11 @@
               poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
               style="width: 100%; height: 100%; object-fit: cover"
             ></video>
-            <div
-              style="position: absolute; bottom: 20px; left: 15px; right: 60px"
-            >
-              <div
-                style="font-weight: bold; font-size: 14px; margin-bottom: 5px"
-              >
-                @gulnaz_sherimbekova
-              </div>
-              <div style="font-size: 12px">
-                Рада приветствовать вас! #team #welcome
-              </div>
-            </div>
-            <div
-              style="
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 70px;
-                height: 70px;
-                background: rgba(255, 255, 255, 0.2);
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                backdrop-filter: blur(5px);
-              "
-            >
-              <i
-                class="fa-solid fa-play"
-                style="font-size: 30px; margin-left: 5px"
-              ></i>
-            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- СЛАЙД 8: HR-Отдел -->
-    <!-- <div class="slide-container" id="slide8">
-      <h2 class="slide-title">Знакомьтесь: HR-Отдел</h2>
-      <div class="content-area">
-        <p style="font-size: 26px; margin-bottom: 40px">
-          Люди, которые знают, как вы попали в компанию... и как вам здесь
-          остаться, развиться и кайфовать от работы!
-        </p>
-        <div class="grid-cards">
-          <div class="card">
-            <div class="icon"><i class="fa-solid fa-seedling"></i></div>
-            <h4>Адаптация</h4>
-            <p>Помогают чувствовать себя «в своей тарелке».</p>
-          </div>
-          <div class="card">
-            <div class="icon"><i class="fa-solid fa-circle-question"></i></div>
-            <h4>Вопросы</h4>
-            <p>Отвечают на всё: от «Где отпуск?» до «Как вырасти?».</p>
-          </div>
-          <div class="card">
-            <div class="icon"><i class="fa-solid fa-file-signature"></i></div>
-            <h4>Документы</h4>
-            <p>Оформляют справки, отпуска и прочую магию.</p>
-          </div>
-          <div class="card">
-            <div class="icon"><i class="fa-solid fa-face-smile"></i></div>
-            <h4>Культура</h4>
-            <p>Следят, чтобы было по-человечески классно.</p>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- СЛАЙД 9: IT-Отдел -->
-    <!-- <div class="slide-container" id="slide9">
-      <h2 class="slide-title">IT-Отдел</h2>
-      <div class="content-area">
-        <div class="two-column">
-          <div class="img-wrapper">
-            <i class="fa-solid fa-server"></i>
-            <div></div>
-          </div>
-          <div>
-            <h3>Те, кто всегда на связи</h3>
-            <p style="margin-bottom: 20px; font-style: italic">
-              (Даже если нет связи)
-            </p>
-            <ul class="custom-list">
-              <li>Подключают и настраивают рабочие места.</li>
-              <li>
-                Помогают при технических сбоях (компьютер, софт, телефония).
-              </li>
-              <li>Обеспечивают стабильность работы систем.</li>
-              <li>Решают заявки через службу поддержки.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- СЛАЙД 10: ГУКОЙКО -->
-    <!-- <div class="slide-container" id="slide10">
-      <h2 class="slide-title">ГУКОЙКО (Контроль качества)</h2>
-      <div class="content-area">
-        <div class="two-column">
-          <div>
-            <h3>Не бойтесь ГУКОЙКО!</h3>
-            <p style="margin-bottom: 30px">
-              Наоборот, задавайте вопросы, уточняйте, просите совета.
-            </p>
-            <div class="card" style="border-left: 5px solid #e1007e">
-              <h4>Кто они такие?</h4>
-              <p>
-                Это команда, которая оценивает, как вы общаетесь с клиентами,
-                помогает понять сильные стороны и зоны роста.
-                <br /><br /><strong class="accent"
-                  >Они не «карают», а поддерживают и учат делать лучше.</strong
-                >
-              </p>
-            </div>
-          </div>
-          <div class="img-wrapper">
-            <i class="fa-solid fa-headphones-simple"></i>
-            <div></div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- СЛАЙД 11: Аналитики -->
-    <!-- <div class="slide-container" id="slide11">
-      <h2 class="slide-title">Аналитики</h2>
-      <div class="content-area">
-        <div class="two-column">
-          <div class="img-wrapper">
-            <i class="fa-solid fa-chart-line"></i>
-            <div></div>
-          </div>
-          <div>
-            <h3>Люди, которые всё считают</h3>
-            <p style="margin-bottom: 20px">
-              Они знают всё, что происходит в цифрах.
-            </p>
-            <ul class="custom-list">
-              <li>Анализируют статистику звонков, качество, тайминги.</li>
-              <li>Формируют отчёты по эффективности операторов.</li>
-              <li>
-                Помогают видеть реальную картину: где круто, а где можно лучше.
-              </li>
-              <li>Передают данные руководству для принятия решений.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- СЛАЙД 12: Супервайзеры -->
     <div class="slide-container" id="slide12">
       <h2 class="slide-title">Супервайзеры</h2>
       <div class="content-area">
@@ -1402,7 +1244,6 @@
       </div>
     </div>
 
-    <!-- СЛАЙД 13: Видео-знакомство (Бакберди) -->
     <div class="slide-container" id="slide13">
       <h2 class="slide-title">Видео-знакомство</h2>
       <div class="content-area">
@@ -1478,57 +1319,11 @@
                 cursor: pointer;
               "
             ></video>
-            <!-- <div
-              id="bakberdiShield"
-              style="
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 10;
-                background: transparent;
-              "
-            ></div> -->
-            <div
-              style="position: absolute; bottom: 20px; left: 15px; right: 60px"
-            >
-              <div
-                style="font-weight: bold; font-size: 14px; margin-bottom: 5px"
-              >
-                @bakberdi_aitbekov
-              </div>
-              <div style="font-size: 12px">
-                Добро пожаловать в команду! #welcome #team
-              </div>
-            </div>
-            <div
-              style="
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 70px;
-                height: 70px;
-                background: rgba(255, 255, 255, 0.2);
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                backdrop-filter: blur(5px);
-              "
-            >
-              <i
-                class="fa-solid fa-play"
-                style="font-size: 30px; margin-left: 5px"
-              ></i>
-            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- СЛАЙД 14: Вы - наша ценность -->
     <div class="slide-container" id="slide14">
       <div class="content-area" style="text-align: center">
         <h1 style="font-size: 60px; color: #e1007e">ВЫ — НАША ЦЕННОСТЬ</h1>
@@ -1554,14 +1349,12 @@
       </div>
     </div>
 
-    <!-- СЛАЙД 15: Миф или Правда (ИНТЕРАКТИВНЫЙ ВЕРТИКАЛЬНЫЙ) -->
     <div class="slide-container" id="slide15">
       <h2 class="slide-title">Миф или Правда?</h2>
       <div class="content-area">
         <div class="quiz-wrapper">
           <div class="quiz-track-container">
             <div class="quiz-track" id="quizTrack">
-              <!-- Вопрос 1 -->
               <div class="quiz-card active" data-correct="myth">
                 <p class="quiz-question">
                   1. График работы абсолютно жесткий и его нельзя поменять.
@@ -1579,7 +1372,6 @@
                 </div>
               </div>
 
-              <!-- Вопрос 2 -->
               <div class="quiz-card" data-correct="myth">
                 <p class="quiz-question">
                   2. За ошибки на линии всегда сразу депремируют.
@@ -1598,7 +1390,6 @@
                 </div>
               </div>
 
-              <!-- Вопрос 3 -->
               <div class="quiz-card" data-correct="truth">
                 <p class="quiz-question">
                   3. Руководители всегда открыты к новым идеям.
@@ -1617,7 +1408,6 @@
                 </div>
               </div>
 
-              <!-- Вопрос 4 -->
               <div class="quiz-card" data-correct="truth">
                 <p class="quiz-question">
                   4. Карьерный рост возможен уже в первые полгода.
@@ -1635,7 +1425,6 @@
                 </div>
               </div>
 
-              <!-- Вопрос 5 -->
               <div class="quiz-card" data-correct="myth">
                 <p class="quiz-question">
                   5. Супервайзеры нужны только для контроля.
@@ -1666,7 +1455,6 @@
       </div>
     </div>
 
-    <!-- СЛАЙД 16: Интерактив -->
     <div class="slide-container" id="slide16">
       <h2 class="slide-title">Интерактив</h2>
       <div
@@ -1701,7 +1489,6 @@
       </div>
     </div>
 
-    <!-- СЛАЙД 17: Привет от опытных сотрудников -->
     <div class="slide-container" id="slide17">
       <h2 class="slide-title">Привет от опытных сотрудников</h2>
       <div class="content-area">
@@ -1747,24 +1534,6 @@
               playsinline
               style="width: 100%; height: 100%; object-fit: cover"
             ></video>
-            <div
-              style="
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-              "
-            >
-              <i
-                class="fa-solid fa-circle-play"
-                style="font-size: 50px; color: rgba(255, 255, 255, 0.8)"
-              ></i>
-            </div>
-            <div style="position: absolute; bottom: 15px; left: 15px">
-              <div style="font-size: 12px; font-weight: bold">
-                @employee_one
-              </div>
-            </div>
           </div>
           <div
             onclick="document.getElementById('reviewVideo2').play()"
@@ -1787,24 +1556,6 @@
               playsinline
               style="width: 100%; height: 100%; object-fit: cover"
             ></video>
-            <div
-              style="
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-              "
-            >
-              <i
-                class="fa-solid fa-circle-play"
-                style="font-size: 50px; color: rgba(255, 255, 255, 0.8)"
-              ></i>
-            </div>
-            <div style="position: absolute; bottom: 15px; left: 15px">
-              <div style="font-size: 12px; font-weight: bold">
-                @employee_two
-              </div>
-            </div>
           </div>
           <div
             onclick="document.getElementById('reviewVideo3').play()"
@@ -1827,30 +1578,11 @@
               playsinline
               style="width: 100%; height: 100%; object-fit: cover"
             ></video>
-            <div
-              style="
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-              "
-            >
-              <i
-                class="fa-solid fa-circle-play"
-                style="font-size: 50px; color: rgba(255, 255, 255, 0.8)"
-              ></i>
-            </div>
-            <div style="position: absolute; bottom: 15px; left: 15px">
-              <div style="font-size: 12px; font-weight: bold">
-                @employee_three
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- СЛАЙД 18: Внутренняя кухня (ИНТЕРАКТИВНЫЙ) -->
     <div class="slide-container" id="slide18">
       <h2 class="slide-title">Внутренняя кухня</h2>
       <div class="content-area">
@@ -1925,7 +1657,6 @@
       </div>
     </div>
 
-    <!-- СЛАЙД 19: Негласные Правила (ИНТЕРАКТИВНЫЙ) -->
     <div class="slide-container" id="slide19">
       <h2 class="slide-title" style="margin-bottom: 20px">
         Негласные правила Контакт-Центра
@@ -1995,7 +1726,6 @@
       </div>
     </div>
 
-    <!-- СЛАЙД 20: Квест (НОВЫЙ) -->
     <div class="slide-container" id="slide20">
       <h2 class="slide-title">Квест "Офисное выживание"</h2>
       <div class="content-area" style="text-align: center">
@@ -2025,7 +1755,6 @@
       </div>
     </div>
 
-    <!-- СЛАЙД 21: Лайфхаки для выживания (КАРУСЕЛЬ) -->
     <div class="slide-container" id="slide21">
       <h2 class="slide-title">Лайфхаки для выживания</h2>
       <div class="content-area">
@@ -2099,7 +1828,6 @@
       </div>
     </div>
 
-    <!-- СЛАЙД 22: Мотивация -->
     <div class="slide22-container" id="slide22-root" tabindex="0">
       <div class="slide22-bg-circle slide22-c1"></div>
       <div class="slide22-bg-circle slide22-c2"></div>
@@ -2113,7 +1841,6 @@
         </p>
 
         <div class="slide22-benefits-grid" id="slide22-grid">
-          <!-- Карточки с уникальными вызовами функций -->
           <div class="slide22-benefit-card" onclick="slide22_setFocus(0)">
             <i class="fa-solid fa-mobile-screen-button"></i>
             <div class="slide22-benefit-text">
@@ -2150,7 +1877,6 @@
       </div>
     </div>
 
-    <!-- СЛАЙД 23: Финал (Спасибо) -->
     <div class="slide-container" id="slide23">
       <div class="content-area" style="text-align: center">
         <h1 style="font-size: 110px; color: #e1007e; margin-bottom: 20px">
@@ -2164,7 +1890,6 @@
       </div>
     </div>
 
-    <!-- СЛАЙД 24: Q&A (Slido) -->
     <div class="slide-container" id="slide24">
       <h2 class="slide-title">Q&A Session</h2>
       <div class="content-area">
