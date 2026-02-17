@@ -889,6 +889,17 @@
         opacity: 0 !important;
         pointer-events: none !important;
       }
+      video::-webkit-media-controls {
+        display: none !important;
+      }
+      video::-webkit-media-controls-start-playback-button {
+        display: none !important;
+        -webkit-appearance: none;
+      }
+      /* Для мобильных браузеров */
+      video {
+        pointer-events: none; /* Браузер не поймет, что по видео можно кликнуть, и не покажет иконку */
+      }
     </style>
   </head>
   <body>
