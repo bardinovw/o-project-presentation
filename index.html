@@ -873,6 +873,22 @@
         color: rgba(255, 255, 255, 0.3);
         pointer-events: none;
       }
+
+      /* --- Скрываем стандартную кнопку Play на видео --- */
+
+      /* Для Chrome, Safari, Edge и браузеров на iOS/Android */
+      video::-webkit-media-controls-start-playback-button {
+        display: none !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+
+      /* Для Firefox (на всякий случай) */
+      video::-moz-media-controls-play-button {
+        display: none !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
     </style>
   </head>
   <body>
