@@ -1167,7 +1167,12 @@
             </p>
             <div
               class="card"
-              onclick="document.getElementById('gulnazVideo').play()"
+              onclick="
+                let v = document.getElementById('bakberdiVideo');
+                v.muted = false;
+                v.currentTime = 0;
+                v.play();
+              "
               style="
                 margin-top: 40px;
                 display: inline-block;
@@ -1199,6 +1204,8 @@
             <video
               id="gulnazVideo"
               src="video-files/Gulnaz.mp4"
+              autoplay
+              muted
               loop
               playsinline
               style="width: 100%; height: 100%; object-fit: cover"
@@ -1426,7 +1433,12 @@
             </p>
             <div
               class="card"
-              onclick="document.getElementById('bakberdiVideo').play()"
+              onclick="
+                let v = document.getElementById('bakberdiVideo');
+                v.muted = false;
+                v.currentTime = 0;
+                v.play();
+              "
               style="
                 margin-top: 40px;
                 display: inline-block;
@@ -1459,6 +1471,8 @@
             <video
               id="bakberdiVideo"
               src="video-files/Bakberdi.mp4"
+              autoplay
+              muted
               loop
               playsinline
               style="width: 100%; height: 100%; object-fit: cover"
