@@ -873,32 +873,8 @@
         color: rgba(255, 255, 255, 0.3);
         pointer-events: none;
       }
-
-      /* --- Скрываем стандартную кнопку Play на видео --- */
-
-      /* Для Chrome, Safari, Edge и браузеров на iOS/Android */
-      video::-webkit-media-controls-start-playback-button {
-        display: none !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-      }
-
-      /* Для Firefox (на всякий случай) */
-      video::-moz-media-controls-play-button {
-        display: none !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-      }
-      video::-webkit-media-controls {
-        display: none !important;
-      }
-      video::-webkit-media-controls-start-playback-button {
-        display: none !important;
-        -webkit-appearance: none;
-      }
-      /* Для мобильных браузеров */
       video {
-        pointer-events: none; /* Браузер не поймет, что по видео можно кликнуть, и не покажет иконку */
+        cursor: pointer; /* Чтобы при наведении на видео тоже появлялся «палец» */
       }
     </style>
   </head>
@@ -1489,8 +1465,17 @@
               muted
               loop
               playsinline
-              poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-              style="width: 100%; height: 100%; object-fit: cover"
+              onclick="
+                this.muted = false;
+                this.currentTime = 0;
+                this.play();
+              "
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                cursor: pointer;
+              "
             ></video>
             <div
               id="bakberdiShield"
